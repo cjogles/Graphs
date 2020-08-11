@@ -40,6 +40,8 @@ Example output
 ```
 
 Clarifications:
+* if there is a tie between furthurest away ancestors, return the lowest numeric ID
+* if the input ID has no parents, return -1
 * The input will not be empty.
 * There are no cycles in the input.
 * There are no "repeated" ancestors – if two individuals are connected, it is by exactly one path.
