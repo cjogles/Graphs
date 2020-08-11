@@ -179,15 +179,24 @@ class Graph:
                     s.push(path_copy)
         return None
 
-    def dfs_recursive(self, starting_vertex, destination_vertex):
+    def dfs_recursive(self, starting_vertex, destination_vertex, path=[]):
         """
         Return a list containing a path from
         starting_vertex to destination_vertex in
         depth-first order.
         This should be done using recursion.
         """
-        
-
+        path = path + [starting_vertex]
+        print(path)
+        # whats my base case?
+        if path[-1] == destination_vertex:
+            return path
+        for vertex in self.vertices[starting_vertex]:
+            if vertex not in path:
+                traced_path = self.dfs_recursive(vertex, destination_vertex, path)
+                if traced_path:
+                    return traced_path
+        pass
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
@@ -241,7 +250,7 @@ if __name__ == '__main__':
         1, 2, 4, 6, 3, 5, 7
     '''
     graph.dft(1)
-    print(graph.dft_recursive(1))
+    graph.dft_recursive(1)
 
     '''
     Valid BFS path:
