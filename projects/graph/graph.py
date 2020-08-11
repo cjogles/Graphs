@@ -92,10 +92,12 @@ class Graph:
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
-
         This should be done using recursion.
         """
-        pass  # TODO
+        print(starting_vertex)
+        for index in self.get_neighbors(starting_vertex):
+            if index > starting_vertex:
+                self.dft_recursive(index)
 
     def bfs(self, starting_vertex_id, destination_vertex):
         """
@@ -175,7 +177,6 @@ class Graph:
         Return a list containing a path from
         starting_vertex to destination_vertex in
         depth-first order.
-
         This should be done using recursion.
         """
         pass  # TODO
