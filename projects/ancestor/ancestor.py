@@ -55,6 +55,7 @@ class Graph:
                 # add all of it's neighbors to the back of the queue
                 for next_vertex in self.get_neighbors(v):
                     q.enqueue(next_vertex)
+        return v 
 
     def dft(self, starting_vertex_id):
         """
@@ -69,6 +70,8 @@ class Graph:
                     # mark the vertex as visited
                     # print it for debug
                     # add all of it's neighbors to the top of the stack
+
+        # find the smallest ancestor. 
         s = Stack()
         s.push(starting_vertex_id)
         visited = set()
@@ -78,7 +81,8 @@ class Graph:
                 visited.add(v)
                 print(v)
                 for next_vertex in self.get_neighbors(v):
-                    s.push(next_vertex)
+                    s.push(next_vertex)   
+        return v
 
     def dft_recursive(self, starting_vertex):
         """
@@ -204,13 +208,19 @@ def earliest_ancestor(ancestors, starting_node):
         if i[1] not in created_verteces:
             graph.add_vertex(i[1])
             created_verteces.add(i[1])
-        graph.add_edge(i[0], i[1])
-    print(graph)
+        graph.add_edge(i[1], i[0])
 
+    if len(graph.vertices[starting_node]) == 0:
+        print("should be -1")
+        return -1
+    print("ancestors", ancestors)
     # TRAVERSE GRAPH
-    graph.bft(1)
+    print("VERTICES", graph.vertices)
+    possible_eldest_vertex = graph.bft(starting_node)
+    # i need this to be 4, the smallest possible vertex
+    return possible_eldest_vertex
 
-earliest_ancestor([(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)], 1)
+print("V",earliest_ancestor([(1, 3), (2, 3), (3, 6), (5, 6), (5, 7), (4, 5), (4, 8), (8, 9), (11, 8), (10, 1)], 9))
 
     
     
