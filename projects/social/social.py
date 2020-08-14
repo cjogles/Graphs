@@ -25,6 +25,7 @@ class Stack():
             return None
     def size(self):
         return len(self.stack)
+
 class User:
     def __init__(self, name):
         self.name = name
